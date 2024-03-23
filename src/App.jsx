@@ -1,4 +1,4 @@
-import { useEffect, useReducer } from "react";
+import { useEffect, useReducer, useState } from "react";
 import Header from "./components/Header";
 import Main from "./components/Main";
 import Loader from "./components/Loader";
@@ -8,6 +8,7 @@ import Game from "./components/Game";
 import NextQuestionButton from "./components/NextQuestionButton";
 import CurrentQuestion from "./components/CurrentQuestion";
 import Finish from "./components/Finish";
+import Timer from "./components/Timer";
 
 const initialState = {
   questions: [],
@@ -16,6 +17,8 @@ const initialState = {
   answer: null,
   points: 0,
   highscore: 0,
+  questionTimer: 6,
+  pause: false,
 };
 
 function reducer(state, action) {
@@ -44,9 +47,9 @@ function reducer(state, action) {
       } else if (question.difficulty == "less") {
         pointsWon = 10;
       }
-      console.log(`qest:${question.correct_answer}`);
       return {
         ...state,
+        pause: true,
         answer: action.payload,
         points:
           action.payload === question.correct_answer
@@ -57,8 +60,10 @@ function reducer(state, action) {
     case "nextQuestion":
       return {
         ...state,
+        pause: false,
         index: state.index + 1,
         answer: null,
+        questionTimer: initialState.questionTimer,
       };
     case "finish":
       return {
@@ -67,14 +72,31 @@ function reducer(state, action) {
         highscore:
           state.points > state.highscore ? state.points : state.highscore,
       };
+    case "restart":
+      return {
+        ...initialState,
+        highscore: state.highscore,
+      };
+    case "tick":
+      return {
+        ...state,
+        questionTimer:
+          state.questionTimer !== 0 && state.pause !== true
+            ? state.questionTimer - 1
+            : state.questionTimer,
+      };
     default:
       throw new Error("Action unknown");
   }
 }
 
 function App() {
-  const [{ questions, status, index, answer, points, highscore }, dispatch] =
-    useReducer(reducer, initialState);
+  const [shouldRefetch, setShouldRefetch] = useState(true);
+  const [
+    { questions, status, index, answer, points, highscore, questionTimer },
+    dispatch,
+  ] = useReducer(reducer, initialState);
+
   const numberOfQuestions = questions.length;
   const maxPoints = questions.reduce((points, question) => {
     if (question.difficulty === "less") {
@@ -85,14 +107,18 @@ function App() {
     return points; // return sum unchanged if difficulty is neither 'less' nor 'more'
   }, 0);
 
-  useEffect(function () {
-    fetch("https://mimkviz.pythonanywhere.com/questions")
-      .then((res) => res.json())
-      .then((data) => dispatch({ type: "dataReceived", payload: data }))
-      .catch((err) => dispatch({ type: "dataFailed" }));
-  }, []);
-
-  console.log(questions);
+  useEffect(
+    function () {
+      if (shouldRefetch) {
+        fetch("https://mimkviz.pythonanywhere.com/questions")
+          .then((res) => res.json())
+          .then((data) => dispatch({ type: "dataReceived", payload: data }))
+          .catch((err) => dispatch({ type: "dataFailed" }))
+          .finally(() => setShouldRefetch(false));
+      }
+    },
+    [shouldRefetch]
+  );
 
   return (
     <>
@@ -111,22 +137,32 @@ function App() {
               points={points}
               maxPoints={maxPoints}
               answer={answer}
+              dispatch={dispatch}
             />
+            <Timer dispatch={dispatch} questionTimer={questionTimer} />
             <Game
               question={questions[index]}
               dispatch={dispatch}
               answer={answer}
+              questionTimer={questionTimer}
             />
             <NextQuestionButton
               dispatch={dispatch}
               answer={answer}
               index={index}
               numberOfQuestions={numberOfQuestions}
+              questionTimer={questionTimer}
             />
           </>
         )}
         {status === "finished" && (
-          <Finish points={points} maxPoints={maxPoints} highscore={highscore} />
+          <Finish
+            points={points}
+            maxPoints={maxPoints}
+            highscore={highscore}
+            dispatch={dispatch}
+            setShouldRefetch={setShouldRefetch}
+          />
         )}
       </Main>
     </>

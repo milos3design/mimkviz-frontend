@@ -17,6 +17,7 @@ function CurrentQuestion({
       <p>
         Poena: {points} / {maxPoints}{" "}
       </p>
+      <p>Vreme:</p>
     </header>
   );
 }
