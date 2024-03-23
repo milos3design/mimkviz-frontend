@@ -1,7 +1,7 @@
 function Header() {
   return (
     <header>
-      <img width="200px" src="/mimkvizlogo.svg" />
+      <img width="300px" src="/mimkvizlogo.svg" />
     </header>
   );
 }

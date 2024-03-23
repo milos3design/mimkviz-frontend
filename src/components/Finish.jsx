@@ -1,4 +1,8 @@
-function Finish({ points, maxPoints, highscore, dispatch, setShouldRefetch }) {
+import { useQuiz } from "../contexts/QuizContext";
+
+function Finish() {
+  const { points, maxPoints, highscore, dispatch, setShouldRefetch } =
+    useQuiz();
   return (
     <div>
       Osvojeno poena: {points} od maksimalnih {maxPoints}

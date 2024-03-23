@@ -1,4 +1,7 @@
-function Answers({ question, dispatch, answer, questionTimer }) {
+import { useQuiz } from "../contexts/QuizContext";
+
+function Answers({ question }) {
+  const { dispatch, answer, questionTimer } = useQuiz();
   if (questionTimer === 0) () => dispatch({ type: "newAnswer", payload: null });
 
   return (

@@ -1,15 +1,13 @@
+import { useQuiz } from "../contexts/QuizContext";
 import Answers from "./Answers";
 
-function Game({ question, dispatch, answer, questionTimer }) {
+function Game() {
+  const { questions, index } = useQuiz();
+  const question = questions.at(index);
   return (
     <>
       <h2>{question.question}</h2>
-      <Answers
-        question={question}
-        dispatch={dispatch}
-        answer={answer}
-        questionTimer={questionTimer}
-      />
+      <Answers question={question} />
     </>
   );
 }
