@@ -1,14 +1,14 @@
-import Header from "./Header";
-import Main from "./Main";
-import Loader from "./Loader";
-import Error from "./Error";
-import Start from "./Start";
-import Game from "./Game";
-import NextQuestionButton from "./NextQuestionButton";
-import CurrentQuestion from "./CurrentQuestion";
-import Finish from "./Finish";
-import Timer from "./Timer";
-import { useQuiz } from "../contexts/QuizContext";
+import Header from "./components/Header";
+import Main from "./components/Main";
+import Loader from "./components/Loader";
+import Error from "./components/Error";
+import Start from "./components/Start";
+import Game from "./components/Game";
+import NextQuestionButton from "./components/NextQuestionButton";
+import CurrentQuestion from "./components/CurrentQuestion";
+import Finish from "./components/Finish";
+import Timer from "./components/Timer";
+import { useQuiz } from "./contexts/QuizContext";
 
 function App() {
   const { status } = useQuiz();
