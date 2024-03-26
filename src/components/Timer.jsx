@@ -11,7 +11,7 @@ function Timer() {
 
       return () => clearInterval(id);
     },
-    [dispatch]
+    [dispatch, questionTimer]
   );
   return <div>{questionTimer}</div>;
 }
