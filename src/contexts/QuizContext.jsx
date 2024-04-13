@@ -118,7 +118,7 @@ function QuizProvider({ children }) {
   useEffect(
     function () {
       if (shouldRefetch) {
-        fetch("https://mimkvizapi.milos3design.com/questions")
+        fetch("https://mimkvizapi.milos3design.com/questions/?format=json")
           .then((res) => res.json())
           .then((data) => dispatch({ type: "dataReceived", payload: data }))
           .catch((err) => dispatch({ type: "dataFailed" }))
