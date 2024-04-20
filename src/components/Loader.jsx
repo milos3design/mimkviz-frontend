@@ -1,5 +1,10 @@
-function Loader() {
-  return <div>Loading questions...</div>;
-}
+import styles from "./Loader.module.css";
 
+function Loader() {
+  return (
+    <div className={styles.spinnerContainer}>
+      <div className={styles.spinner}></div>
+    </div>
+  );
+}
 export default Loader;
