@@ -7,6 +7,8 @@ import {
   useState,
 } from "react";
 
+import CryptoJS from "crypto-js";
+
 const QuizContext = createContext();
 
 const initialState = {
@@ -46,12 +48,28 @@ function reducer(state, action) {
       } else if (question.difficulty == "less") {
         pointsWon = 10;
       }
+
+      const aesKey = import.meta.env.VITE_AES_KEY;
+      const fixedIV = import.meta.env.VITE_IV_KEY;
+
+      const encryptValue = (value) => {
+        const key = CryptoJS.enc.Utf8.parse(aesKey);
+        const iv = CryptoJS.enc.Utf8.parse(fixedIV);
+
+        const encryptedUserAnswer = CryptoJS.AES.encrypt(value, key, {
+          iv: iv,
+          mode: CryptoJS.mode.CBC,
+        }).toString();
+
+        return encryptedUserAnswer;
+      };
+
       return {
         ...state,
         pause: true,
         answer: action.payload,
         points:
-          action.payload === question.correct_answer
+          encryptValue(action.payload) === question.correct_answer
             ? state.points + pointsWon
             : state.points,
       };
