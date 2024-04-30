@@ -1,0 +1,32 @@
+.timerContainer {
+  background-color: var(--color-light-yellow);
+  width: 6rem;
+  height: 6rem;
+  border-radius: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translateX(2rem);
+}
+
+.progress {
+  background-color: var(--color-brand-purple);
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.hole {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -1,4 +1,5 @@
 import { useQuiz } from "../contexts/QuizContext";
+import Timer from "./Timer";
 
 function CurrentQuestion() {
   const { index, numberOfQuestions, points, maxPoints, answer } = useQuiz();
@@ -14,7 +15,9 @@ function CurrentQuestion() {
       <p>
         Poena: {points} / {maxPoints}{" "}
       </p>
-      <p>Vreme:</p>
+      <p>
+        Vreme: <Timer />
+      </p>
     </header>
   );
 }

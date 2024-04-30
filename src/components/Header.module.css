@@ -1,0 +1,50 @@
+.headerContainer {
+  height: 8rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  height: 100%;
+  max-width: 12rem;
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  max-width: 100%;
+  height: auto;
+}
+
+.stats {
+  background-color: var(--color-light-yellow);
+  height: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 0.25rem;
+  margin-right: 3rem;
+  border-radius: 1rem;
+}
+.stats > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 6.5rem;
+}
+.stats .timer {
+  width: 4rem;
+}
+
+.title {
+  font-size: 1rem;
+}
+
+.statText {
+  font-family: "Bungee", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 1.75rem;
+  line-height: 1;
+}

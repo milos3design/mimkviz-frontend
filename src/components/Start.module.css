@@ -1,0 +1,53 @@
+.startContainer {
+  height: 100vh;
+  height: 100dvh;
+  width: 100vw;
+  width: 100dvw;
+}
+
+.startScreen {
+  height: 80%;
+  max-width: 100%;
+  background-image: url("back-tile.png");
+  background-repeat: repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.startScreenContent {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.startScreen img {
+  max-width: 100%;
+}
+
+.centerContent {
+  max-width: 50%;
+  text-align: center;
+}
+
+.centerContent img {
+  max-width: 75%;
+  height: auto;
+  margin: 2rem 0;
+}
+
+.imageLeft {
+  transform: translateY(-5rem);
+  max-width: 20%;
+}
+
+.imageRight {
+  transform: translateY(5rem);
+  max-width: 20%;
+}
+
+h2 {
+  font-weight: 400;
+}

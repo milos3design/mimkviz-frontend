@@ -1,4 +1,5 @@
 import { useQuiz } from "../contexts/QuizContext";
+import styles from "./NextQuestionButton.module.css";
 
 function NextQuestionButton() {
   const { dispatch, answer, index, numberOfQuestions, questionTimer } =
@@ -10,13 +11,15 @@ function NextQuestionButton() {
   }
 
   return (
-    <button
-      onClick={() =>
-        dispatch({ type: isLastQuestion ? "finish" : "nextQuestion" })
-      }
-    >
-      {isLastQuestion ? "Kraj" : "Sledeće"}
-    </button>
+    <div className={styles.buttonContainer}>
+      <button
+        onClick={() =>
+          dispatch({ type: isLastQuestion ? "finish" : "nextQuestion" })
+        }
+      >
+        {isLastQuestion ? "Kraj" : "Sledeće"}
+      </button>
+    </div>
   );
 }
 

@@ -1,0 +1,7 @@
+.imageFrame img {
+  width: 100%;
+  height: auto;
+  border-radius: 1rem;
+  border: 0.25rem solid #e270ff;
+  box-shadow: 0.25rem 0.5rem 0px var(--color-dark-purple);
+}

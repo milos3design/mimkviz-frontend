@@ -18,7 +18,7 @@ const initialState = {
   answer: null,
   points: 0,
   highscore: 0,
-  questionTimer: 6,
+  questionTimer: 15,
   pause: false,
 };
 
@@ -51,10 +51,14 @@ function reducer(state, action) {
 
       const aesKey = import.meta.env.VITE_AES_KEY;
       const fixedIV = import.meta.env.VITE_IV_KEY;
+      console.log(aesKey);
+      console.log(fixedIV);
 
       const encryptValue = (value) => {
         const key = CryptoJS.enc.Utf8.parse(aesKey);
         const iv = CryptoJS.enc.Utf8.parse(fixedIV);
+        console.log(key);
+        console.log(iv);
 
         const encryptedUserAnswer = CryptoJS.AES.encrypt(value, key, {
           iv: iv,
@@ -133,13 +137,19 @@ function QuizProvider({ children }) {
   }, 0);
 
   const [shouldRefetch, setShouldRefetch] = useState(true);
+  const [error, setError] = useState(null);
+
   useEffect(
     function () {
       if (shouldRefetch) {
         fetch(import.meta.env.VITE_API_URL)
           .then((res) => res.json())
           .then((data) => dispatch({ type: "dataReceived", payload: data }))
-          .catch((err) => dispatch({ type: "dataFailed" }))
+          // eslint-disable-next-line no-unused-vars
+          .catch((err) => {
+            dispatch({ type: "dataFailed" });
+            setError(err); // Set error state
+          })
           .finally(() => setShouldRefetch(false));
       }
     },
@@ -160,6 +170,7 @@ function QuizProvider({ children }) {
         numberOfQuestions,
         maxPoints,
         setShouldRefetch,
+        error,
 
         dispatch,
       }}

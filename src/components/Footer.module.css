@@ -1,0 +1,17 @@
+.footer {
+  height: 20%;
+  background-color: var(--color-dark-purple);
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+.footer a,
+.footer p {
+  color: #5b4e9c;
+  margin-bottom: 0.5rem;
+  text-decoration: none;
+}
+.footer a {
+  cursor: pointer;
+}
