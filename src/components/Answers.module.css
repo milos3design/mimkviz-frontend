@@ -1,0 +1,67 @@
+.answerBox {
+  margin: 0rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
+}
+
+.answerButton {
+  width: calc(100% - 3rem); /* Button takes up 100% width minus the margin */
+  margin-top: 1rem;
+  text-align: left;
+  padding: 0.75rem;
+  background-color: white;
+  border-radius: 1rem;
+  border: 0.25rem solid #f8f0e7;
+  font-family: "Montserrat", sans-serif;
+  color: var(--color-dark-purple);
+  font-optical-sizing: auto;
+  font-size: 1rem;
+  font-weight: 500;
+  font-style: normal;
+  line-height: 1.6;
+}
+
+.answerButton:hover {
+  border: 0.15rem solid #fde5cc;
+  transition: 0.3s;
+  background-color: white;
+  border: 0.25rem solid var(--color-brand-purple);
+  box-shadow: 0.25rem 0.5rem 0px var(--color-dark-purple);
+  transform: translateY(-0.3rem);
+  cursor: pointer;
+}
+
+.answerButton.correct {
+  border: 0.25rem solid var(--color-brand-blue);
+  animation: blueColor 0.5s ease-in;
+}
+
+.answerButton.wrong {
+  border: 0.25rem solid var(--color-brand-red);
+  animation: redColor 0.5s ease-in;
+}
+
+.answerButton.inactive:hover {
+  border: 0.15rem solid #fde5cc;
+  transition: 0.3s;
+  background-color: var(--color-light-purple);
+  border: 0.25rem solid var(--color-dark-blue);
+  box-shadow: 0px 0px 0px;
+  transform: translateY(0rem);
+  cursor: not-allowed;
+}
+
+@keyframes blueColor {
+  25% {
+    background-color: var(--color-brand-blue);
+  }
+}
+
+@keyframes redColor {
+  25% {
+    background-color: var(--color-brand-red);
+  }
+}

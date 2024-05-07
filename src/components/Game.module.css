@@ -11,8 +11,10 @@
 
 .mainbox {
   margin-top: 1rem;
+  padding: 2rem;
+  padding-bottom: 4rem;
   background-color: var(--color-light-yellow);
   border-radius: 1rem;
   border: 0.2rem solid;
-  border-color: rgb(234, 219, 200);
+  border-color: rgb(235, 231, 225);
 }

@@ -16,6 +16,8 @@ const initialState = {
   status: "loading",
   index: 0,
   answer: null,
+  answerIndex: null,
+  isCorrect: null,
   points: 0,
   highscore: 0,
   questionTimer: 15,
@@ -51,14 +53,10 @@ function reducer(state, action) {
 
       const aesKey = import.meta.env.VITE_AES_KEY;
       const fixedIV = import.meta.env.VITE_IV_KEY;
-      console.log(aesKey);
-      console.log(fixedIV);
 
       const encryptValue = (value) => {
         const key = CryptoJS.enc.Utf8.parse(aesKey);
         const iv = CryptoJS.enc.Utf8.parse(fixedIV);
-        console.log(key);
-        console.log(iv);
 
         const encryptedUserAnswer = CryptoJS.AES.encrypt(value, key, {
           iv: iv,
@@ -68,14 +66,15 @@ function reducer(state, action) {
         return encryptedUserAnswer;
       };
 
+      const checkIsCorrect =
+        encryptValue(action.payload) === question.correct_answer;
+
       return {
         ...state,
         pause: true,
         answer: action.payload,
-        points:
-          encryptValue(action.payload) === question.correct_answer
-            ? state.points + pointsWon
-            : state.points,
+        points: checkIsCorrect ? state.points + pointsWon : state.points,
+        isCorrect: checkIsCorrect ? true : false,
       };
     }
     case "nextQuestion":
@@ -84,6 +83,7 @@ function reducer(state, action) {
         pause: false,
         index: state.index + 1,
         answer: null,
+        isCorrect: null,
         questionTimer: initialState.questionTimer,
       };
     case "finish":
@@ -118,6 +118,7 @@ function QuizProvider({ children }) {
       status,
       index,
       answer,
+      isCorrect,
       points,
       highscore,
       questionTimer,
@@ -163,6 +164,7 @@ function QuizProvider({ children }) {
         status,
         index,
         answer,
+        isCorrect,
         points,
         highscore,
         pause,

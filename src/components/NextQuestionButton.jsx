@@ -11,13 +11,17 @@ function NextQuestionButton() {
   }
 
   return (
-    <div className={styles.buttonContainer}>
+    <div className={styles.nextContainer}>
       <button
+        className={styles.nextButton}
         onClick={() =>
           dispatch({ type: isLastQuestion ? "finish" : "nextQuestion" })
         }
       >
         {isLastQuestion ? "Kraj" : "Sledeće"}
+        <div className={styles.arrowIconCircle}>
+          <img className={styles.arrowIcon} src="/arrow.svg" alt="arrow" />
+        </div>
       </button>
     </div>
   );
