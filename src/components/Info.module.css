@@ -1,1 +1,22 @@
+.infoContainer {
+  display: block;
+  position: relative;
+  padding: 3rem;
+  max-width: 99vw;
+  display: flex;
+  justify-content: start;
+  align-items: start;
+}
 
+.info {
+  text-align: center;
+}
+
+.info p {
+  margin-bottom: 1rem;
+}
+.info img {
+  padding-top: 7rem;
+  padding-bottom: 1rem;
+  max-width: 12rem;
+}

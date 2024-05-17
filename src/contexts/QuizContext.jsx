@@ -106,6 +106,11 @@ function reducer(state, action) {
             ? state.questionTimer - 1
             : state.questionTimer,
       };
+    case "info":
+      return {
+        ...state,
+        status: "info",
+      };
     default:
       throw new Error("Action unknown");
   }

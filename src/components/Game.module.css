@@ -1,5 +1,7 @@
 .gameContainer {
-  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   width: 64rem;
   max-width: 90vw;
   height: 80vh;
@@ -17,4 +19,33 @@
   border-radius: 1rem;
   border: 0.2rem solid;
   border-color: rgb(235, 231, 225);
+  position: relative;
+}
+
+@media (max-width: 576px) {
+  .gameContainer {
+    height: 100vh;
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .mainbox {
+    margin-top: 0;
+    font-size: 0.82rem;
+  }
+}
+
+@media (max-height: 576px) {
+  .gameContainer {
+    display: flex;
+    flex-direction: row;
+  }
+  .mainbox {
+    height: 72vh;
+    width: 65vw;
+    font-size: 0.65rem;
+    padding: 1rem;
+    padding-bottom: 2rem;
+  }
 }

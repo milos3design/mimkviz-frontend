@@ -65,3 +65,21 @@
     background-color: var(--color-brand-red);
   }
 }
+
+@media (max-width: 576px) {
+  .answerButton {
+    width: calc(100% - 3rem); /* Button takes up 100% width minus the margin */
+    margin-top: 0.65rem;
+    text-align: left;
+    padding: 0.5rem;
+    font-size: 0.82rem;
+    line-height: 1.2;
+  }
+}
+
+@media (max-height: 576px) {
+  .answerButton {
+    margin-top: 0.5rem;
+    font-size: 0.72rem;
+  }
+}

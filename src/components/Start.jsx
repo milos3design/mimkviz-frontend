@@ -7,7 +7,7 @@ import Footer from "./Footer";
 function Start() {
   const { numberOfQuestions } = useQuiz();
   return (
-    <div className={styles.startContainer}>
+    <div>
       <div className={styles.startScreen}>
         <div className={styles.startScreenContent}>
           <div className={styles.imageLeft}>
@@ -24,7 +24,7 @@ function Start() {
         </div>
         <StartButton />
       </div>
-      <Footer height="20%" />
+      <Footer />
     </div>
   );
 }
