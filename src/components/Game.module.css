@@ -32,7 +32,10 @@
   }
   .mainbox {
     margin-top: 0;
-    font-size: 0.82rem;
+    padding: 0.75rem;
+    padding-bottom: 2.25rem;
+    font-size: 0.7rem;
+    line-height: 1.25;
   }
 }
 
@@ -44,7 +47,7 @@
   .mainbox {
     height: 72vh;
     width: 65vw;
-    font-size: 0.65rem;
+    font-size: 0.7rem;
     padding: 1rem;
     padding-bottom: 2rem;
   }
