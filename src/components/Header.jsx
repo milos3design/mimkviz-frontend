@@ -1,11 +1,13 @@
 import { useQuiz } from "../contexts/QuizContext";
 import styles from "./Header.module.css";
+import BackButton from "./BackButton";
 import Timer from "./Timer";
 
 function Header() {
   const { index, numberOfQuestions, points, maxPoints } = useQuiz();
   return (
     <header className={styles.headerContainer}>
+      <BackButton />
       <div className={styles.logo}>
         <img src="/mimkvizlogo.png" alt="Mimkviz logo" />
       </div>

@@ -7,7 +7,8 @@
 .bigButton {
   cursor: pointer;
   margin: 2rem;
-  width: 23rem;
+  margin-top: 4rem;
+  width: 22rem;
   height: 5.5rem;
   border-radius: 2.75rem;
   border: 0;
@@ -40,6 +41,7 @@
 
 @media (max-width: 768px) {
   .bigButton {
+    margin: 1rem;
     transform: scale(0.75);
     width: 20rem;
   }

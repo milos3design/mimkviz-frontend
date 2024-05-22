@@ -1,5 +1,9 @@
 .backContainer {
-  position: absolute;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 1rem;
+  z-index: 99;
 }
 .backButton {
   cursor: pointer;
@@ -7,8 +11,8 @@
   height: 4rem;
   border-radius: 2rem;
   border: 0;
-  background-color: var(--color-brand-purple);
-  color: var(--color-light-white);
+  background-color: var(--color-light-purple);
+  color: var(--color-dark-purple);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -18,8 +22,9 @@
   font-style: normal;
   font-size: 1.25rem;
   line-height: 1;
-  box-shadow: 0.5rem 0.5rem 1rem rgba(0, 0, 0, 0.5);
+  box-shadow: 0.5rem 0.5rem 1rem rgba(0, 0, 0, 0.25);
   z-index: 99;
+  transform: scale(0.75);
 }
 .arrowIconCircle {
   width: 3.4rem;
@@ -36,14 +41,30 @@
 }
 
 @media (max-width: 768px) {
+  .backContainer {
+    padding: 1rem;
+    margin: 1rem;
+  }
+
   .backButton {
-    transform: scale(0.75);
-    transform-origin: left;
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    transform: scale(0.65);
+    transform-origin: top left;
   }
 }
 
 @media (max-height: 576px) {
+  .backContainer {
+    padding: 0;
+  }
+
   .backButton {
-    transform: scale(0.75);
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    transform: scale(0.55);
+    transform-origin: top left;
   }
 }

@@ -61,14 +61,15 @@
   .logo {
     margin-top: 2rem;
     margin: 1rem;
+    margin-top: 5rem;
   }
   .logo img {
     max-width: 82%;
     height: auto;
   }
   .stats {
-    transform: scale(0.72); /* Scale down to 80% of its original size */
-    transform-origin: top; /* Keep the top of the container fixed */
+    transform: scale(0.85);
+    transform-origin: top;
   }
 }
 
@@ -85,7 +86,8 @@
   .logo {
     max-width: 15vw;
     margin-right: 1rem;
-    margin-bottom: 1rem;
+    margin-top: 5.5rem;
+    margin-bottom: 1.5rem;
   }
   .stats {
     flex-direction: column;
@@ -94,5 +96,7 @@
     width: 8rem;
     height: auto;
     margin-right: 1rem;
+    transform: scale(0.85);
+    transform-origin: top;
   }
 }

@@ -7,9 +7,9 @@ import Footer from "./Footer";
 function Start() {
   const { numberOfQuestions } = useQuiz();
   return (
-    <div>
-      <div className={styles.startScreen}>
-        <div className={styles.startScreenContent}>
+    <div className={styles.startScreenContainer}>
+      <div className={styles.startScreenContent}>
+        <div className={styles.startScreenInfo}>
           <div className={styles.imageLeft}>
             <Image />
           </div>

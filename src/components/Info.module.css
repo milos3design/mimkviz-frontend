@@ -1,22 +1,30 @@
 .infoContainer {
-  display: block;
+  display: flex;
   position: relative;
-  padding: 3rem;
+  padding: 1rem;
   max-width: 99vw;
   display: flex;
-  justify-content: start;
+  justify-content: center;
   align-items: start;
 }
 
 .info {
   text-align: center;
+  max-width: 50rem;
 }
 
 .info p {
   margin-bottom: 1rem;
 }
 .info img {
-  padding-top: 7rem;
+  padding-top: 3rem;
   padding-bottom: 1rem;
-  max-width: 12rem;
+  max-width: 18rem;
+}
+
+@media (max-height: 576px) {
+  .info img {
+    margin-top: -7rem;
+    transform: scale(0.75);
+  }
 }
