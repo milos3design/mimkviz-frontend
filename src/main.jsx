@@ -5,9 +5,9 @@ import "./index.css";
 import { QuizProvider } from "./contexts/QuizContext.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <QuizProvider>
-      <App />
-    </QuizProvider>
-  </React.StrictMode>
+  // <React.StrictMode>
+  <QuizProvider>
+    <App />
+  </QuizProvider>
+  //</React.StrictMode>
 );

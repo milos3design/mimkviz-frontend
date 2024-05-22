@@ -25,14 +25,53 @@
   color: var(--color-brand-purple);
 }
 
+.leaderboard {
+  margin: 20px;
+  padding: 10px;
+  border-radius: 5px;
+  width: 78%;
+}
+
+.leaderboard h3 {
+  margin-bottom: 10px;
+}
+
+.leaderboardGrid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  margin-top: 20px;
+}
+
+.leaderboardHeader,
+.leaderboardRow {
+  display: contents;
+}
+
+.leaderboardHeader > div,
+.leaderboardRow > div {
+  padding: 0.75rem;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+}
+
+.leaderboardHeader > div {
+  background-color: var(--color-brand-blue);
+  color: var(--color-light-white);
+  font-size: 1.5rem;
+}
+
+.leaderboardRow:nth-child(even) > div {
+  background-color: var(--color-light-yellow);
+}
+
 .videoGrid {
   width: 80%;
   display: grid;
   grid-template-columns: repeat(
     auto-fit,
-    minmax(250px, 1fr)
+    minmax(15rem, 1fr)
   ); /* Each column has a minimum width of 250px and will expand to fill the available space */
-  gap: 20px; /* Gap between grid items */
+  gap: 1.5rem; /* Gap between grid items */
 }
 
 .videoContainer {
