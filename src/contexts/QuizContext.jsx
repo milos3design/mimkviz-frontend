@@ -20,7 +20,8 @@ const initialState = {
   isCorrect: null,
   points: 0,
   highscore: 0,
-  questionTimer: 15,
+  questionTimer: 12,
+  totalTimePlayed: 0,
   pause: false,
 };
 
@@ -102,9 +103,13 @@ function reducer(state, action) {
       return {
         ...state,
         questionTimer:
-          state.questionTimer !== 0 && state.pause !== true
-            ? state.questionTimer - 1
+          state.questionTimer !== 0.0 && state.pause !== true
+            ? parseFloat((state.questionTimer - 0.1).toFixed(1))
             : state.questionTimer,
+        totalTimePlayed:
+          state.questionTimer !== 0 && state.pause !== true
+            ? parseFloat((state.totalTimePlayed + 0.1).toFixed(1))
+            : state.totalTimePlayed,
       };
     case "info":
       return {

@@ -8,10 +8,10 @@ function Timer() {
 
   useEffect(() => {
     const id = setInterval(() => {
-      if (questionTimer > 0 && status === "game" && answer === null) {
+      if (questionTimer > 0.0 && status === "game" && answer === null) {
         dispatch({ type: "tick" });
       }
-    }, 1000);
+    }, 100);
 
     return () => clearInterval(id);
   }, [dispatch, questionTimer, status, answer]);
@@ -31,7 +31,7 @@ function Timer() {
         }}
       >
         <div className={styles.hole}></div>
-        <div className={styles.hole}>{questionTimer}</div>
+        <div className={styles.hole}>{questionTimer.toFixed(0)}</div>
       </div>
     </div>
   );

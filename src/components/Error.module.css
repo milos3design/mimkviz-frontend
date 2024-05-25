@@ -6,3 +6,7 @@
 .error div {
   margin: 1rem;
 }
+.error img {
+  max-height: 50vh;
+  width: auto;
+}
