@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useQuiz } from "../contexts/QuizContext";
 import BackButton from "./BackButton";
 import styles from "./Finish.module.css";
+import { getCookie } from "../utils/csrf";
 
 function Finish() {
   let time = 5;
@@ -12,7 +13,9 @@ function Finish() {
   const [hasSubmitted, setHasSubmitted] = useState(false);
 
   const fetchHighscores = () => {
-    fetch(import.meta.env.VITE_LB_URL)
+    fetch(import.meta.env.VITE_LB_URL, {
+      credentials: "include", // Ensure cookies are sent with the request
+    })
       .then((response) => {
         if (!response.ok) {
           throw new Error("Greška u mrežnom odgovoru");
@@ -48,11 +51,14 @@ function Finish() {
       if (checkHighscore() && !hasSubmitted) {
         try {
           setHasSubmitted(true);
+          const csrfToken = getCookie("csrftoken");
           const response = await fetch(import.meta.env.VITE_LB_URL, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
+              "X-CSRFToken": csrfToken, // Include CSRF token in headers
             },
+            credentials: "include", // Ensure cookies are sent with the request
             body: JSON.stringify({ name, points, time }),
           });
           if (!response.ok) {

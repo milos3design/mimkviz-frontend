@@ -183,7 +183,6 @@ function QuizProvider({ children }) {
         maxPoints,
         setShouldRefetch,
         error,
-
         dispatch,
       }}
     >
