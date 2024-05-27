@@ -116,6 +116,11 @@ function reducer(state, action) {
         ...state,
         status: "info",
       };
+    case "leaderboard":
+      return {
+        ...state,
+        status: "leaderboard",
+      };
     default:
       throw new Error("Action unknown");
   }
@@ -132,6 +137,7 @@ function QuizProvider({ children }) {
       points,
       highscore,
       questionTimer,
+      totalTimePlayed,
       pause,
     },
     dispatch,
@@ -179,6 +185,7 @@ function QuizProvider({ children }) {
         highscore,
         pause,
         questionTimer,
+        totalTimePlayed,
         numberOfQuestions,
         maxPoints,
         setShouldRefetch,

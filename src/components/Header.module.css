@@ -72,9 +72,12 @@
   }
 }
 
-@media (max-width: 1500px) and (max-height: 768px) {
+@media (max-width: 1500px) and (max-height: 680px) {
   .logo {
-    margin-left: 15rem;
+    display: none;
+  }
+  .headerContainer {
+    margin-top: 5rem;
   }
 }
 
@@ -84,8 +87,6 @@
     justify-content: center;
     align-items: center;
     height: auto;
-    margin: 0;
-    margin-top: 2.5rem;
     padding: 0;
   }
   .logo {

@@ -1,4 +1,3 @@
-// utils.js or any other utility file
 export function getCookie(name) {
   let cookieValue = null;
   if (document.cookie && document.cookie !== "") {

@@ -20,7 +20,6 @@ function Timer() {
     ((initialQuestionTimer.current - questionTimer) /
       initialQuestionTimer.current) *
     100;
-  console.log(progress);
 
   return (
     <div className={styles.timerContainer}>

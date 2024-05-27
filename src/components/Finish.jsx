@@ -1,34 +1,18 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useQuiz } from "../contexts/QuizContext";
-import BackButton from "./BackButton";
-import styles from "./Finish.module.css";
+import { fetchHighscores as fetchHighscoresUtil } from "../utils/highscoreUtils";
 import { getCookie } from "../utils/csrf";
+import BackButton from "./BackButton";
+import Leaderboard from "./Leaderboard";
+import useHighscores from "../hooks/useHighscores";
+import styles from "./Finish.module.css";
 
 function Finish() {
-  let time = 5;
-  const { questions, points } = useQuiz();
-  const [highscores, setHighscores] = useState([]);
+  const { questions, points, totalTimePlayed } = useQuiz();
+  const { highscores, setHighscores } = useHighscores();
   const [name, setName] = useState("");
   const [showAlert, setShowAlert] = useState(false);
   const [hasSubmitted, setHasSubmitted] = useState(false);
-
-  const fetchHighscores = () => {
-    fetch(import.meta.env.VITE_LB_URL, {
-      credentials: "include", // Ensure cookies are sent with the request
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Greška u mrežnom odgovoru");
-        }
-        return response.json();
-      })
-      .then((data) => {
-        setHighscores(data);
-      })
-      .catch((error) => {
-        console.error("Greška u preuzimanju top liste:", error);
-      });
-  };
 
   const checkHighscore = () => {
     // Check if the new score is better than any of the existing scores
@@ -36,7 +20,8 @@ function Finish() {
       const existingScore = highscores[i];
       if (
         points > existingScore.points ||
-        (points === existingScore.points && time <= existingScore.time)
+        (points === existingScore.points &&
+          totalTimePlayed <= existingScore.time)
       ) {
         return true;
       }
@@ -46,7 +31,7 @@ function Finish() {
 
   const submitScore = async (e) => {
     e.preventDefault();
-
+    let time = Math.round(parseFloat(totalTimePlayed) * 10) / 10;
     if (name.trim() !== "" && name.length <= 16) {
       if (checkHighscore() && !hasSubmitted) {
         try {
@@ -56,7 +41,7 @@ function Finish() {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
-              "X-CSRFToken": csrfToken, // Include CSRF token in headers
+              "X-CSRFToken": csrfToken,
             },
             credentials: "include", // Ensure cookies are sent with the request
             body: JSON.stringify({ name, points, time }),
@@ -65,7 +50,8 @@ function Finish() {
             const errorText = await response.text();
             throw new Error(`Greška u mrežnom odgovoru: ${errorText}`);
           }
-          fetchHighscores();
+          const data = await fetchHighscoresUtil();
+          setHighscores(data);
         } catch (error) {
           console.error("Greška u preuzimanju top liste:", error);
           setHasSubmitted(false);
@@ -75,9 +61,6 @@ function Finish() {
       setShowAlert(true);
     }
   };
-  useEffect(() => {
-    fetchHighscores();
-  }, []);
 
   function getYouTubeVideoID(url) {
     const regex =
@@ -117,24 +100,7 @@ function Finish() {
           </div>
         )}
       </div>
-
-      <div className={styles.leaderboard}>
-        <h3>Top Lista</h3>
-        <div className={styles.leaderboardGrid}>
-          <div className={styles.leaderboardHeader}>
-            <div>Ime</div>
-            <div>Poena</div>
-            <div>Vreme</div>
-          </div>
-          {highscores.map((score, index) => (
-            <div key={index} className={styles.leaderboardRow}>
-              <div>{score.name}</div>
-              <div>{score.points}</div>
-              <div>{score.time}</div>
-            </div>
-          ))}
-        </div>
-      </div>
+      <Leaderboard highscores={highscores} />
       <div className={styles.videoGrid}>
         {questions.map((question) => (
           <div key={question.id} className={styles.videoContainer}>

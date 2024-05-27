@@ -7,7 +7,8 @@ function Footer() {
   return (
     <footer className={styles.footer}>
       <p>
-        <a onClick={() => dispatch({ type: "info" })}>info</a> | by{" "}
+        <a onClick={() => dispatch({ type: "info" })}>Info</a> |
+        <a onClick={() => dispatch({ type: "leaderboard" })}> Top Lista</a> | by{" "}
         <a href="https://www.milos3design.com">shommy</a>
       </p>
     </footer>
