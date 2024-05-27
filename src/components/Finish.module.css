@@ -88,9 +88,10 @@
   display: grid;
   grid-template-columns: repeat(
     auto-fit,
-    minmax(15rem, 1fr)
+    minmax(20rem, 1fr)
   ); /* Each column has a minimum width of 250px and will expand to fill the available space */
   gap: 1.5rem; /* Gap between grid items */
+  margin-bottom: 2rem;
 }
 
 .videoContainer {
@@ -111,9 +112,6 @@
 }
 
 @media (max-width: 576px) {
-  .finishContainer {
-    margin-top: 4rem;
-  }
   .finishContainer p {
     font-size: 1.25rem;
   }
