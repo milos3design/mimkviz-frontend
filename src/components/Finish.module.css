@@ -86,23 +86,19 @@
 .videoGrid {
   width: 80%;
   display: grid;
-  grid-template-columns: repeat(
-    auto-fit,
-    minmax(20rem, 1fr)
-  ); /* Each column has a minimum width of 250px and will expand to fill the available space */
-  gap: 1.5rem; /* Gap between grid items */
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  gap: 1.5rem;
   margin-bottom: 2rem;
 }
 
 .videoContainer {
   text-align: left;
-  padding: 1rem;
+  padding: 3rem;
 }
 
 .videoContainer iframe {
-  width: 100%; /* Ensure the video fills its container */
-  height: 12rem; /* Set initial height to 0 */
-  /* padding-top: 56.25%;  16:9 aspect ratio */
+  width: 100%;
+  height: 105%;
   border: none;
 }
 
