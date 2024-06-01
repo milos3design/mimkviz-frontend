@@ -24,9 +24,28 @@ function Info() {
           </p>
           <p>
             Da li si dovoljno spreman da se pridružiš elitnom društvu poznavaoca
-            mimova i osvojiš svoje mesto u ekskluzivnoj top listi? Zabava i smeh
-            su zagarantovani u &ldquo;MimKvizu&ldquo; - igri koja spaja
-            nostalgiju, humor i izazov u jednoj neverovatnoj avanturi!
+            mimova i osvojiš svoje mesto u ekskluzivnoj top listi? Na kraju igre
+            ćeš pronaći video zapise iz postavljenih pitanja, pa se tako možeš
+            podsetiti dogodovština iz video klipova koje si zaboravio ili
+            propustio. Zabava i smeh su zagarantovani u &ldquo;MimKvizu&ldquo; -
+            igri koja spaja nostalgiju, humor i izazov u jednoj neverovatnoj
+            avanturi!
+          </p>
+          <p>
+            Predloge za nova pitanja možete poslati na{" "}
+            <span>
+              <a
+                href={`mailto:${encodeURIComponent(
+                  "info.mimkviz@gmail.com"
+                )}?subject=${encodeURIComponent("Predlog za novi video")}`}
+              >
+                info.mimkviz@gmail.com
+              </a>
+            </span>
+          </p>
+          <p>
+            *Svrha ove igre nije omalovažavanje niti vređanje bilo koga, već
+            isključivo humor i zabava.
           </p>
         </div>
       </div>
