@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useQuiz } from "../contexts/QuizContext";
 import { fetchHighscores as fetchHighscoresUtil } from "../utils/highscoreUtils";
 import { getCookie } from "../utils/csrf";
@@ -13,6 +13,31 @@ function Finish() {
   const [name, setName] = useState("");
   const [showAlert, setShowAlert] = useState(false);
   const [hasSubmitted, setHasSubmitted] = useState(false);
+
+  useEffect(() => {
+    const recordGameCompletion = async () => {
+      try {
+        const csrfToken = getCookie("csrftoken");
+        const response = await fetch(import.meta.env.VITE_COUNT_URL, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "X-CSRFToken": csrfToken,
+          },
+          credentials: "include",
+        });
+
+        if (!response.ok) {
+          const errorText = await response.text();
+          throw new Error(`Network response error: ${errorText}`);
+        }
+      } catch (error) {
+        console.error("Error recording game completion:", error);
+      }
+    };
+
+    recordGameCompletion();
+  }, []);
 
   const checkHighscore = () => {
     // Check if the new score is better than any of the existing scores
