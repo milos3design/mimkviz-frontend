@@ -1,7 +1,7 @@
 .leaderboard {
   border-radius: 5px;
   width: 78%;
-  margin: 1.5rem 0;
+  margin: 2rem 0;
 }
 
 .leaderboardGrid {
@@ -42,7 +42,6 @@
 
 @media (max-width: 576px) {
   .leaderboard {
-    margin: 0;
     margin-bottom: 1rem;
   }
   .leaderboardHeader > div {
@@ -52,7 +51,6 @@
 
 @media (max-height: 576px) {
   .leaderboard {
-    margin: 0;
     margin-bottom: 1rem;
   }
 }

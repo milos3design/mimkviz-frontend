@@ -24,7 +24,7 @@
   color: var(--color-brand-purple);
 }
 .highScore {
-  margin-top: 1.5rem;
+  margin-top: 2rem;
 }
 .highScore h3 {
   font-size: 2rem;
@@ -93,7 +93,8 @@
 
 .videoContainer {
   text-align: left;
-  padding: 3rem;
+  padding: 1.5rem;
+  margin: 1rem 0;
 }
 
 .videoContainer iframe {
@@ -118,11 +119,20 @@
   .input {
     margin: 0.5rem;
     transform: none;
+    font-size: 1rem;
   }
   .button {
     margin: 0;
     transform: scale(0.85);
     transform-origin: left;
+  }
+
+  .videoGrid {
+    width: 80%;
+    display: block;
+  }
+  .videoContainer {
+    padding: 0;
   }
 }
 
@@ -140,6 +150,7 @@
   .input {
     margin: 0.5rem;
     transform: none;
+    font-size: 1rem;
   }
   .button {
     margin: 0;
