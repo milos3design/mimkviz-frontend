@@ -97,8 +97,11 @@ function Finish() {
   return (
     <div className={styles.finishContainer}>
       <BackButton />
-      <p> Osvojeno poena: </p>
-      <h2>{points}</h2>
+      <div className={styles.result}>
+        <p>Osvojeno &nbsp;</p>
+        <h2>{points}</h2>
+        <p>&nbsp; poena za {totalTimePlayed} sekundi!</p>
+      </div>
 
       <div className={styles.highScore}>
         {checkHighscore() && !hasSubmitted && (
