@@ -32,7 +32,8 @@ function Info() {
             avanturi!
           </p>
           <p>
-            Predloge za nova pitanja i sugestije možeš poslati na{" "}
+            Predloge za nova pitanja i sugestije možeš poslati na Predloge za
+            nova pitanja i sugestije možeš poslati na{" "}
             <span>
               <a
                 href={`mailto:${encodeURIComponent(
