@@ -19,7 +19,6 @@ const initialState = {
   answerIndex: null,
   isCorrect: null,
   points: 0,
-  highscore: 0,
   questionTimer: 12,
   totalTimePlayed: 0,
   pause: false,
@@ -91,13 +90,10 @@ function reducer(state, action) {
       return {
         ...state,
         status: "finished",
-        highscore:
-          state.points > state.highscore ? state.points : state.highscore,
       };
     case "restart":
       return {
         ...initialState,
-        highscore: state.highscore,
       };
     case "tick":
       return {
@@ -135,7 +131,6 @@ function QuizProvider({ children }) {
       answer,
       isCorrect,
       points,
-      highscore,
       questionTimer,
       totalTimePlayed,
       pause,
@@ -182,7 +177,6 @@ function QuizProvider({ children }) {
         answer,
         isCorrect,
         points,
-        highscore,
         pause,
         questionTimer,
         totalTimePlayed,
