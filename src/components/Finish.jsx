@@ -88,6 +88,10 @@ function Finish() {
   };
 
   function getYouTubeVideoID(url) {
+    if (!url) {
+      console.warn("getYouTubeVideoID called with invalid URL:", url);
+      return null;
+    }
     const regex =
       /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:[^/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
     const matches = url.match(regex);
@@ -130,18 +134,23 @@ function Finish() {
       </div>
       <Leaderboard highscores={highscores} />
       <div className={styles.videoGrid}>
-        {questions.map((question) => (
-          <div key={question.id} className={styles.videoContainer}>
-            <h4>{question.question}</h4>
-            <iframe
-              src={`https://www.youtube.com/embed/${getYouTubeVideoID(
-                question.url
-              )}`}
-              allowFullScreen
-              title={`Video ${question.id}`}
-            ></iframe>
-          </div>
-        ))}
+        {questions.map((question) => {
+          const videoID = getYouTubeVideoID(question.url);
+          return (
+            <div key={question.id} className={styles.videoContainer}>
+              <h4>{question.question}</h4>
+              {videoID ? (
+                <iframe
+                  src={`https://www.youtube.com/embed/${videoID}`}
+                  allowFullScreen
+                  title={`Video ${question.id}`}
+                ></iframe>
+              ) : (
+                <p>Video link nije validan.</p>
+              )}
+            </div>
+          );
+        })}
       </div>
     </div>
   );
