@@ -42,7 +42,7 @@
 
 @media (max-width: 576px) {
   .leaderboard {
-    margin-top: 0;
+    margin-top: 1rem;
     margin-bottom: 1rem;
   }
   .leaderboardHeader > div {
